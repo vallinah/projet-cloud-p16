@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  dotnet-api:
+    build:
+      context: .
+      dockerfile: Dockerfile # Spécifie le Dockerfile à utiliser
+    container_name: dotnet_api_container
+    restart: always
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - postgres-db
+    networks:
+      - app-network
+
+  postgres-db:
+    image: postgres:15
+    container_name: postgres_container
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: cloud
+      POSTGRES_PASSWORD: cloud
+      POSTGRES_DB: projet_cloud_p16
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
