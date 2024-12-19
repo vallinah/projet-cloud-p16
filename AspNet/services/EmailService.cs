@@ -25,7 +25,7 @@ public class EmailService
                 client.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
 
                 // Authentification avec vos identifiants Gmail
-                client.Authenticate("otisoavallinah@gmail.com", "ampq arsb rjbc zzrx"); 
+                client.Authenticate("otisoavallinah@gmail.com", "ampq arsb rjbc zzrx");
 
                 // Envoi de l'email
                 client.Send(emailMessage);

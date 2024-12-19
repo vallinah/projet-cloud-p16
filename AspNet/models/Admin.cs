@@ -7,9 +7,9 @@ namespace Aspnet.Models
     public class Admin
     {
         [Key]
-        [Column("id_admin")]
+        [Column("admin_id")]
         [StringLength(150)]
-        public string IdAdmin { get; set; }
+        public string AdminId { get; set; }
 
         [Column("login")]
         [StringLength(250)]
@@ -24,6 +24,7 @@ namespace Aspnet.Models
         [Required]
         [StringLength(250)]
         public string Password { get; set; }
+
     }
 
 }

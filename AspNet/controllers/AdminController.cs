@@ -11,13 +11,13 @@ namespace Aspnet.Controllers
     public class AdminController : ControllerBase
     {
         private readonly AdminService _adminService;
-        private readonly EmailService _emailService;
+        private readonly EmailPinsService _emailPinsService;
         private readonly PinCodeService _pinCodeService;
 
-        public AdminController(AdminService adminService, EmailService emailService, PinCodeService pinCodeService)
+        public AdminController(AdminService adminService, EmailPinsService emailPinsService, PinCodeService pinCodeService)
         {
             _adminService = adminService;
-            _emailService = emailService;
+            _emailPinsService = emailPinsService;
             _pinCodeService = pinCodeService;
         }
 
@@ -31,12 +31,7 @@ namespace Aspnet.Controllers
             {
                 return Unauthorized("Login ou mot de passe incorrect.");
             }
-
-            // Générer un code PIN et l'envoyer par email
-            var pinCode = _pinCodeService.GeneratePinCode();
-            _emailService.SendPinCodeEmail(admin.Email, pinCode);
-
-            return Ok("Authentification réussie. Un code PIN a été envoyé à votre email.");
+            return Ok("Authentification réussie.");
         }
     }
 }

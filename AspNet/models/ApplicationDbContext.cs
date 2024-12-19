@@ -1,3 +1,4 @@
+using AspNet.Models;
 using Microsoft.EntityFrameworkCore;
 namespace Aspnet.Models
 {
@@ -9,5 +10,8 @@ namespace Aspnet.Models
         }
 
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<EmailPins> EmailPinss { get; set; }
+        public DbSet<Token> Tokens { get; set; }
+        public DbSet<Users> Userss { get; set; }
     }
 }

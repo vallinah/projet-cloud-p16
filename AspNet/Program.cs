@@ -14,8 +14,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
 
 builder.Services.AddScoped<AdminService>();
-builder.Services.AddScoped<EmailService>();
+builder.Services.AddScoped<EmailPinsService>();
 builder.Services.AddScoped<PinCodeService>();
+builder.Services.AddScoped<UsersService>();
+builder.Services.AddScoped<TokenService>();
 
 builder.WebHost.ConfigureKestrel(options =>
 {

@@ -14,7 +14,6 @@ namespace Aspnet.Services
             _context = context;
         }
 
-        // Méthode pour vérifier le login et le mot de passe de l'administrateur
         public async Task<Admin?> AuthenticateAdminAsync(string login, string password)
         {
             var admin = await _context.Admins
@@ -23,21 +22,11 @@ namespace Aspnet.Services
 
             if (admin == null || admin.Password != password)
             {
-                return null; // Authentification échouée
+                return null;
             }
 
-            return admin; // Authentification réussie
+            return admin;
         }
 
-        // Exemple de fonction de hachage de mot de passe
-        private string HashPassword(string password)
-        {
-            // Utilisez une méthode sécurisée pour le hachage des mots de passe (ex. PBKDF2, bcrypt, etc.)
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                return Convert.ToBase64String(bytes);
-            }
-        }
     }
 }
