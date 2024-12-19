@@ -113,6 +113,7 @@ namespace Aspnet.Services
                 {
                     user.IsValid = true;
                     await _context.SaveChangesAsync();
+                    await _tokenService.DeleteTokenByIdUserAsync(userId);
                     return true;
                 }
 

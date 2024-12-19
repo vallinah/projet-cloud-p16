@@ -40,5 +40,16 @@ namespace Aspnet.Services
             return await _context.Tokens
                 .FirstOrDefaultAsync(t => t.UserId == userId);
         }
+
+        public async Task DeleteTokenByIdUserAsync(string userId)
+        {
+            Token? token = await GetTokenByIdUserAsync(userId);
+            if (token != null)
+            {
+                _context.Tokens.Remove(token);
+                await _context.SaveChangesAsync();
+                Console.WriteLine("voafafa o");
+            }
+        }
     }
 }
