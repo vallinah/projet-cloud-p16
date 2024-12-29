@@ -1,7 +1,4 @@
 # projet-cloud-p16
-    git clone <URL_DU_DEPOT>
-    cd <NOM_DU_DEPOT>
-
     Construire les Conteneurs
 
     Avant de démarrer les conteneurs, construisez-les avec la commande suivante :
@@ -32,5 +29,8 @@ Pour arrêter les conteneurs en cours d'exécution, utilisez la commande suivant
 docker-compose down
 
 Cette commande arrête et supprime les conteneurs tout en conservant les volumes de données (base de données, fichiers).
+
+
+
 
 
