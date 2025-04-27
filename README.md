@@ -1,11 +1,20 @@
-# Lancer et builder le projet:
-Build:
-->docker-compose up --build
+# Lancer et builder le projet
 
-Lancement:
-->docker-compose up
+## Build
+```bash
+docker-compose up --build
+```
 
-# Accéder au conteneur PostgreSQL:
+## Lancement
+```bash
+docker-compose up
+```
+
+# Accéder au conteneur PostgreSQL
+```bash
 docker exec -it postgres_container psql -U cloud --dbname=projet_cloud_p16
+```
 
-# Mot de Passe de tous les 10 utilisateur sont tous:123456
+# Information utilisateur
+Le mot de passe des 10 utilisateurs est : `123456`
+
