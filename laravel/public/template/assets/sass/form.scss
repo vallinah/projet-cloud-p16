@@ -1,0 +1,197 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Quicksand";
+  src: url("./../font/quicksand/quicksand-v31-latin-500.woff2") format("woff2"), url("./../font/quicksand/quicksand-v31-latin-regular.woff2") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+$form-font: "Quicksand", sans-serif;
+    $theme_color1:rgb(1, 12, 48);
+
+
+
+@mixin responsive(){
+    @content;
+    @media screen and (min-width:1200px){}
+    @media screen and (max-width:450px){
+        .sm , .lg{
+            min-width: 100%;
+            height: 100%;
+        }
+        .form-container{
+            color: white;
+            border-radius: 0px;
+            background-color: transparent;
+            padding:0cm;
+            justify-content:flex-start;
+            h2{
+                font-size: medium;
+                align-self: center;
+            }
+            form{
+                background-color: transparent;
+                font-size: small;
+                width: 90%;
+                gap: 0.25cm;
+                .form-control{
+                    align-self: center;
+                    width: 80%;
+                    gap: 0cm;
+                    input , select{
+                        height: 0.75cm;
+                        border-radius: 2px;
+                        width: 100%;
+                        border: none;
+                        background-color: #ffffffdc;
+                    }
+                    input{
+                        padding-left: 0.15cm;
+                        padding-right: 0.15cm;
+                        font-family: $form-font;
+                        font-size: small;
+                    }
+                }
+                .button-div{
+                    // background-color: aqua;
+                    min-height: 0.75cm;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    align-self: center;
+                    gap: 0.25cm;
+                    margin-top: 2cm;
+                }
+            }
+        }
+    }
+    @media  screen and (min-width:450px) and (max-width:1200px) {}
+}
+.sm{
+    width: 40%;
+}
+.lg{
+    width: 60%;
+}
+.form-container{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    padding:0.25cm;
+    align-items: center;
+    justify-content: space-around;
+    min-height: min-content;
+    font-family: $form-font;
+    border-radius: 10px;
+    h2{
+        font-size: large;
+        align-self: flex-start;
+        margin-left: 0.25cm;
+        font-weight: bold ;
+        margin-bottom: 0.5cm;
+    }
+    form{
+        background-color: rgb(255, 255, 255);
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0.25cm;
+        font-size: small ;
+        .form-control{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content:space-around;
+            input , select{
+                height: 1cm;
+                border-radius: 5px;
+                width: 100%;
+                border: none;
+                // border: 2px solid #021845;
+                background-color: #03276e40;
+            }
+            input{
+                padding-left: 0.25cm;
+                padding-right: 0.25cm;
+                font-family: $form-font;
+                font-size: small;
+            }
+            input:focus , select:focus{
+                box-shadow: 0 0 5px rgb(1, 1, 82);
+                background-color: white;
+                outline: none;
+                border: none;
+            }
+            .checklist{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                row-gap: 5px;
+                div{
+                    width: 40%;
+                    display: flex;
+                    align-items:center;
+                    justify-content: space-between;
+                }
+            }
+            input[type="checkbox"], input[type="radio"] {
+                /* Vos styles ici */
+                padding:none;
+                height: 0.5cm;
+                width: 0.5cm;
+            }
+            input::-webkit-calendar-picker-indicator{
+                // color: #6078a7;
+            }
+            select:focus{
+                option:hover{
+                    background-color: #021845; /* Vert */
+                    color: white; /* Texte blanc */
+                }
+            }
+
+        }
+
+    }
+}
+.button-div{
+    margin-top: 0.5cm;
+    min-height:1cm;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: center;
+    gap: 0.5cm;
+    button{
+        min-height:100%;
+        font-family: $form-font;
+        padding: 10px 30px;
+    }
+}
+@include responsive();
+// .form-container::before{
+//     content: "";
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     // margin-left: 250px;
+//     background: radial-gradient(circle, rgba(255, 255, 255, 0.932), transparent);
+//     // top: 30%;
+//     // border-radius: 50%;
+//     // filter: blur(50px);
+// }
+// .form-container::after{
+//     background: radial-gradient(circle, rgb(33, 188, 103)transparent);
+//     // filter: blur(40px);
+// }

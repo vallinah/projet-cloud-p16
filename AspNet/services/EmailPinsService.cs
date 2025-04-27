@@ -40,7 +40,7 @@ namespace Aspnet.Services
         {
             // Création du message
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("Admin", "otisoavallinah@gmail.com"));
+            emailMessage.From.Add(new MailboxAddress("Admin", "antsamadagascar@gmail.com"));
             emailMessage.To.Add(MailboxAddress.Parse(toEmail)); // Simplification
             emailMessage.Subject = "Your PIN Code";
             emailMessage.Body = new TextPart("plain")
@@ -56,7 +56,7 @@ namespace Aspnet.Services
                     client.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
 
                     // Authentification avec vos identifiants Gmail
-                    client.Authenticate("otisoavallinah@gmail.com", "ampq arsb rjbc zzrx");
+                    client.Authenticate("antsamadagascar@gmail.com", "eong yuko uxmz yakl");
 
                     // Envoi de l'email
                     client.Send(emailMessage);
@@ -72,11 +72,14 @@ namespace Aspnet.Services
             }
         }
 
+
         public async Task<EmailPins?> GetEmailPinsByUserIdAsync(string userId)
         {
             return await _context.EmailPinss
-                .OrderByDescending(ep => ep.CreatedDate)
-                .FirstOrDefaultAsync(ep => ep.UserId == userId);
+                .Where(ep => ep.UserId == userId) // Filtre par utilisateur
+                .OrderByDescending(ep => ep.CreatedDate) // Trie pour obtenir le plus récent
+                .Take(1) // Limite à un seul enregistrement
+                .FirstOrDefaultAsync(); // Retourne le premier ou null
         }
 
         public async Task<bool> CheckPinCode(string UserId, string pinCode, DateTime receivedDate)

@@ -1,0 +1,264 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Quicksand";
+  src: url("./../font/quicksand/quicksand-v31-latin-500.woff2") format("woff2"), url("./../font/quicksand/quicksand-v31-latin-regular.woff2") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+$theme_color1:rgb(1, 12, 48);
+$theme_color2:#ffd500;
+$theme_color3:rgb(255, 255, 255);
+$form-div-w:55%;
+$form-login-w:50%;
+$form-sign-w:70%;
+$input-height:25px;
+
+$form-font: "Quicksand", sans-serif;
+
+@mixin formulaire(){
+    @content;
+    display: block;
+    .logo{
+        color: $theme_color2;
+        font-family: Arial, sans-serif;
+        font-weight: lighter;
+        justify-self: center;
+    }
+    form{
+        width: 90%;
+        min-height: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25cm;
+        background-color: #ffffff;
+        justify-self: center;
+        justify-content: start;
+        border-top: 2px solid $theme_color2;
+        border-bottom: 2px solid $theme_color2;
+        padding-bottom: 5%;
+        .index{
+            align-self: center;
+            color: $theme_color2;
+            font-family: $form-font;
+        }
+        button{
+            margin-top: 25px;
+            align-self: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: $input-height;
+            min-width: 30%;
+            width: 80%;
+            padding: 0.5cm;
+        }
+        button:hover{
+            box-shadow: 0 0 6px $theme_color1;
+            cursor: pointer;
+        }
+
+    }
+    .link{
+        justify-self: center;
+        font-size: x-small;
+        font-family: $form-font;
+        padding-bottom: 5%;
+    }
+}
+
+@mixin responsive_login(){
+    @content;
+    @media screen and (max-width:450px) {
+        .log-div{
+            background-color: transparent;
+            width:100%;
+            height:100%;
+            border-radius: 0px;
+            display: flex;
+            .form-login , .form-sign{
+                width:100%;
+                min-height: 100%;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                gap: 1cm;
+                form{
+                    background-color: transparent;
+                    border-top: none;
+                    border-bottom: none;
+                }
+                .form-control{
+                    input{
+                        background-color: $theme_color3;
+                        color: #3a3a3a;
+                    }
+                    label{
+                        color: $theme_color3;
+                    }
+
+                }
+                .key-form{
+                    input{
+                        background-color: $theme_color3;
+                        color: #3a3a3a;
+                    }
+                }
+                .link{
+                    color: white;
+                }
+            }
+            .form-illustration{
+                display: none;
+            }
+            .logo{
+                font-size: xx-large;
+            }
+        }
+    }
+    @media screen and (min-width:450px) and (max-width:1200px) {
+        min-width: 700px;
+        .form-illustration{
+            display: none;
+        }
+        .form-login , .form-sign{
+            width: 100%;
+        }
+    }
+}
+html,body{
+    min-width:350px;
+    height: 100%; /* Définit la hauteur à 100% pour html et body */
+    margin: 0; /* Supprime les marges par défaut du body */
+    padding: 0; /* Supprime les paddings par défaut */
+    overflow-x:hidden;
+    background: linear-gradient(to bottom,$theme_color1, #2C085D);
+    width: 100%;
+}
+
+
+.body-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include responsive_login();
+}
+
+.log-div{
+    width: $form-div-w;
+    min-height: 65%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.form-login{
+    @include formulaire();
+    width: $form-login-w;
+    min-height: 100%;
+    height:max-content;
+
+}
+.form-sign{
+    @include formulaire();
+    width: $form-sign-w;
+    min-height: 100%;
+    height:max-content;
+}
+
+.log{
+    width: calc(100% - $form-login-w);
+    // background-color: #D99910;
+}
+
+.sign{
+    width: calc(100% - $form-sign-w);
+}
+
+.form-illustration{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width:60%;
+        height: auto;
+        object-fit: cover;
+    }
+    // background-color: #3a3a3a;
+}
+
+.h-form{
+    align-self:center;
+    display:flex;
+    flex-direction: row;
+    gap:6%;
+    width: 80%;
+    .form-control{
+        width: 47%;
+    }
+}
+.form-control{
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-self:center;
+    width: 80%;
+    gap: 5px;
+    label{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #3a3a3a;
+    }
+    input{
+        border: none;
+        background-color: $theme_color1;
+        height: $input-height;
+        border-radius: 7px;
+        color:$theme_color3;
+        font-family: $form-font;
+        padding: 0.25cm;
+    }
+    input::-webkit-calendar-picker-indicator{
+        filter: invert(1);
+    }
+}
+
+.key-form{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    width: 80%;
+    height: max-content;
+    align-items: center;
+    justify-content: space-around;
+    input{
+        width: 1cm;
+        height: 1cm;
+        border: none;
+        background-color: $theme_color1;
+        border-radius: 7px;
+        color:$theme_color3;
+        font-family: $form-font;
+        text-align: center;
+        font-size: xx-large;
+    }
+}
+
+.submit{
+    background-color: $theme_color2;
+    color: $theme_color3;
+    font-family: $form-font;
+}
+button{
+    border: none;
+    border-radius: 5px;
+}
+button:hover{
+    transform:scale(1.01);
+}

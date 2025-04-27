@@ -1,0 +1,288 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Quicksand";
+  src: url("./../font/quicksand/quicksand-v31-latin-500.woff2") format("woff2"), url("./../font/quicksand/quicksand-v31-latin-regular.woff2") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+html, body {
+  min-width: 350px;
+  height: 100%; /* Définit la hauteur à 100% pour html et body */
+  margin: 0; /* Supprime les marges par défaut du body */
+  padding: 0; /* Supprime les paddings par défaut */
+  overflow-x: hidden;
+  background: linear-gradient(to bottom, rgb(1, 12, 48), #2C085D);
+  width: 100%;
+}
+
+.body-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 450px) {
+  .body-login .log-div {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    display: flex;
+  }
+  .body-login .log-div .form-login, .body-login .log-div .form-sign {
+    width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1cm;
+  }
+  .body-login .log-div .form-login form, .body-login .log-div .form-sign form {
+    background-color: transparent;
+    border-top: none;
+    border-bottom: none;
+  }
+  .body-login .log-div .form-login .form-control input, .body-login .log-div .form-sign .form-control input {
+    background-color: rgb(255, 255, 255);
+    color: #3a3a3a;
+  }
+  .body-login .log-div .form-login .form-control label, .body-login .log-div .form-sign .form-control label {
+    color: rgb(255, 255, 255);
+  }
+  .body-login .log-div .form-login .key-form input, .body-login .log-div .form-sign .key-form input {
+    background-color: rgb(255, 255, 255);
+    color: #3a3a3a;
+  }
+  .body-login .log-div .form-login .link, .body-login .log-div .form-sign .link {
+    color: white;
+  }
+  .body-login .log-div .form-illustration {
+    display: none;
+  }
+  .body-login .log-div .logo {
+    font-size: xx-large;
+  }
+}
+@media screen and (min-width: 450px) and (max-width: 1200px) {
+  .body-login {
+    min-width: 700px;
+  }
+  .body-login .form-illustration {
+    display: none;
+  }
+  .body-login .form-login, .body-login .form-sign {
+    width: 100%;
+  }
+}
+
+.log-div {
+  width: 20%;
+  min-height: 65%;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.form-login {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+  height: max-content;
+}
+.form-login .logo {
+  color: #ffd500;
+  font-family: Arial, sans-serif;
+  font-weight: lighter;
+  justify-self: center;
+}
+.form-login form {
+  width: 90%;
+  min-height: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25cm;
+  background-color: #ffffff;
+  justify-self: center;
+  justify-content: start;
+  border-top: 2px solid #ffd500;
+  border-bottom: 2px solid #ffd500;
+  padding-bottom: 5%;
+}
+.form-login form .index {
+  align-self: center;
+  color: #ffd500;
+  font-family: "Quicksand", sans-serif;
+}
+.form-login form button {
+  margin-top: 25px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  min-width: 30%;
+  width: 80%;
+  padding: 0.5cm;
+}
+.form-login form button:hover {
+  box-shadow: 0 0 6px rgb(1, 12, 48);
+  cursor: pointer;
+}
+.form-login .link {
+  justify-self: center;
+  font-size: x-small;
+  font-family: "Quicksand", sans-serif;
+  padding-bottom: 5%;
+}
+
+.form-sign {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+  height: max-content;
+}
+.form-sign .logo {
+  color: #ffd500;
+  font-family: Arial, sans-serif;
+  font-weight: lighter;
+  justify-self: center;
+}
+.form-sign form {
+  width: 90%;
+  min-height: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25cm;
+  background-color: #ffffff;
+  justify-self: center;
+  justify-content: start;
+  border-top: 2px solid #ffd500;
+  border-bottom: 2px solid #ffd500;
+  padding-bottom: 5%;
+}
+.form-sign form .index {
+  align-self: center;
+  color: #ffd500;
+  font-family: "Quicksand", sans-serif;
+}
+.form-sign form button {
+  margin-top: 25px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  min-width: 30%;
+  width: 80%;
+  padding: 0.5cm;
+}
+.form-sign form button:hover {
+  box-shadow: 0 0 6px rgb(1, 12, 48);
+  cursor: pointer;
+}
+.form-sign .link {
+  justify-self: center;
+  font-size: x-small;
+  font-family: "Quicksand", sans-serif;
+  padding-bottom: 5%;
+}
+
+.log {
+  width: 0%;
+}
+
+.sign {
+  width: 0%;
+}
+
+.form-illustration {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-illustration img {
+  width: 60%;
+  height: auto;
+  object-fit: cover;
+}
+
+.h-form {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  gap: 6%;
+  width: 80%;
+}
+.h-form .form-control {
+  width: 47%;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 80%;
+  gap: 5px;
+}
+.form-control label {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #3a3a3a;
+}
+.form-control input {
+  border: none;
+  background-color: rgb(1, 12, 48);
+  height: 25px;
+  border-radius: 7px;
+  color: rgb(255, 255, 255);
+  font-family: "Quicksand", sans-serif;
+  padding: 0.25cm;
+}
+.form-control input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.key-form {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  width: 80%;
+  height: max-content;
+  align-items: center;
+  justify-content: space-around;
+}
+.key-form input {
+  width: 1cm;
+  height: 1cm;
+  border: none;
+  background-color: rgb(1, 12, 48);
+  border-radius: 7px;
+  color: rgb(255, 255, 255);
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
+  font-size: xx-large;
+}
+
+.submit {
+  background-color: #ffd500;
+  color: rgb(255, 255, 255);
+  font-family: "Quicksand", sans-serif;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  transform: scale(1.01);
+}
+
+/*# sourceMappingURL=login.css.map */

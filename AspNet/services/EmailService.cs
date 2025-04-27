@@ -9,7 +9,7 @@ public class EmailService
     {
         // Création du message
         var emailMessage = new MimeMessage();
-        emailMessage.From.Add(new MailboxAddress("Admin", "otisoavallinah@gmail.com"));
+        emailMessage.From.Add(new MailboxAddress("Admin", "antsamadagascar@gmail.com"));
         emailMessage.To.Add(MailboxAddress.Parse(toEmail)); // Simplification
         emailMessage.Subject = "Your PIN Code";
         emailMessage.Body = new TextPart("plain")
@@ -25,7 +25,7 @@ public class EmailService
                 client.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
 
                 // Authentification avec vos identifiants Gmail
-                client.Authenticate("otisoavallinah@gmail.com", "ampq arsb rjbc zzrx");
+                client.Authenticate("antsamadagascar@gmail.com", "eong yuko uxmz yakl");
 
                 // Envoi de l'email
                 client.Send(emailMessage);

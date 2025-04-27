@@ -24,14 +24,28 @@ namespace Aspnet.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            // Vérifier les identifiants de l'administrateur
             var admin = await _adminService.AuthenticateAdminAsync(request.Login, request.Password);
 
             if (admin == null)
             {
-                return Unauthorized("Login ou mot de passe incorrect.");
+                Console.WriteLine($"tsa misy admin hita oooo");
+                return NotFound(new
+                {
+                    status = "error",
+                    message = "Admin non trouvé"
+                });
             }
-            return Ok("Authentification réussie.");
+
+            Console.WriteLine($"valeur: {admin.Login}, {admin.Password}");
+            return Ok(new
+            {
+                status = "success",
+                data = new
+                {
+                    adminId = admin.AdminId,
+                    login = admin.Login,
+                }
+            });
         }
     }
 }

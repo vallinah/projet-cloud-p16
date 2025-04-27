@@ -2,47 +2,121 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends \TCG\Voyager\Models\User
+use Google\Auth\Credentials\ServiceAccountCredentials;
+use Google\Auth\HttpHandler\HttpHandlerFactory;
+use GuzzleHttp\Client;
+
+class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use Notifiable;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'user_id';
+
+    /**
+     * The "type" of the primary key ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'date_of_birth',
+        'is_valid',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'date_of_birth' => 'date',
+        'created_date' => 'datetime',
+        'is_valid' => 'boolean',
+    ];
+
+    public function cryptos()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+        return $this->belongsToMany(Cryptocurrency::class, 'user_crypto', 'user_id', 'crypto_id')
+            ->withPivot('quantity');
+    }
+
+     /**
+     * Récupère l'image de profil depuis Firebase
+     *
+     * @return string|null
+     */
+    public function getProfileImage()
+    {
+        $userId = $this->user_id;
+
+        $keyFilePath = base_path('projet-cloud-final-firebase-adminsdk-fbsvc-d8ca8a2b3f.json');
+        $scopes = ['https://www.googleapis.com/auth/datastore'];
+
+        $credentials = new ServiceAccountCredentials($scopes, $keyFilePath);
+        $accessToken = $credentials->fetchAuthToken(HttpHandlerFactory::build())['access_token'];
+
+        $client = new Client();
+
+        $url = "https://firestore.googleapis.com/v1/projects/projet-cloud-final/databases/(default)/documents/users/{$userId}";
+
+        $headers = [
+            'Authorization' => "Bearer {$accessToken}",
+            'Accept' => 'application/json',
         ];
+
+        try {
+            $response = $client->get($url, ['headers' => $headers]);
+
+            $data = json_decode($response->getBody()->getContents(), true);
+
+            if (isset($data['fields']['profileImage']['stringValue'])) {
+                return $data['fields']['profileImage']['stringValue'];
+            }
+
+            return null;
+        } catch (\Exception $e) {
+            return null; 
+        }
     }
 }

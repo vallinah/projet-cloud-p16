@@ -31,4 +31,15 @@ WORKDIR /var/www/html
 RUN chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html
 
+
+# Ajouter un script pour exécuter la commande artisan automatiquement
+COPY ./start.sh /usr/local/bin/start.sh
+
+# Rendre le script exécutable
+RUN chmod +x /usr/local/bin/start.sh
+
+# Utiliser l'utilisateur www-data pour exécuter Apache et Laravel
 USER www-data
+
+# Spécifier le point d'entrée du conteneur
+CMD ["/usr/local/bin/start.sh"]

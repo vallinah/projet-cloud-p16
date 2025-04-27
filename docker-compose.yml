@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   # Service pour l'API .NET
   dotnet-api:
@@ -12,6 +10,7 @@ services:
       - "5000:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - GOOGLE_APPLICATION_CREDENTIALS=projet-cloud-final-firebase-adminsdk-fbsvc-d8ca8a2b3f.json
     depends_on:
       - postgres-db
     networks:
@@ -50,8 +49,10 @@ services:
       - DB_DATABASE=projet_cloud_p16
       - DB_USERNAME=cloud
       - DB_PASSWORD=cloud
+      - FIREBASE_CREDENTIALS=projet-cloud-final-firebase-adminsdk-fbsvc-d8ca8a2b3f.json
     volumes:
       - ./laravel:/var/www/html
+      - ./laravel/vendor:/var/www/html/vendor
     depends_on:
       - postgres-db
     networks:

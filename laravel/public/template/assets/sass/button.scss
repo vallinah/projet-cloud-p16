@@ -1,0 +1,188 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Quicksand";
+  src: url("./../font/quicksand/quicksand-v31-latin-500.woff2") format("woff2"), url("./../font/quicksand/quicksand-v31-latin-regular.woff2") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+$form-font: "Quicksand", sans-serif;
+$theme_color1:rgb(1, 12, 48);
+
+@mixin responsive(){
+    @content;
+    @media screen and (min-width:1200px){}
+    @media screen and (max-width:450px){
+        height: 0.75cm;
+        padding:5px 15px ;
+        justify-content: center;
+    }
+}
+
+
+
+.del-btn{
+    background:rgb(255, 44, 44)  ;
+    color:rgb(255, 255, 255);
+    font-size: small;
+    // padding: 10px 15px;
+    border: 2px solid rgb(255, 44, 44);
+    border-radius: 8px;
+    // text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgb(255, 44, 44);
+    transition: 0.3s;
+}
+
+.del-btn:hover {
+    background: rgb(255, 44, 44);
+    color: #111;
+    color: white;
+    box-shadow: none;
+    transform: scale(1.1);
+}
+
+.achat-btn {
+    background:  $theme_color1;
+    color:#0fff;
+    font-size: small;
+    // padding: 10px 15px;
+    border: 2px solid #0fff;
+    border-radius: 8px;
+    // text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0fff;
+    transition: 0.3s;
+}
+
+.achat-btn:hover {
+    background: #00ffff;;
+    color: #111;
+    box-shadow: none;
+    transform: scale(1.1);
+}
+
+.vente-btn {
+    background:  $theme_color1;
+    color:#fffb00;
+    font-size: small;
+    // padding: 10px 15px;
+    border: 2px solid #fffb00;
+    border-radius: 8px;
+    // text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 10px #fffb00;;
+    transition: 0.3s;
+}
+
+.vente-btn:hover {
+    background: #fffb00;;
+    color: #111;
+    box-shadow: none;
+    transform: scale(1.1);
+}
+
+.cancel-btn{
+    background:  white;
+    color:$theme_color1;
+    font-size: small;
+    border: none;
+    border-radius: 8px;
+    // text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 10px #272727;
+    transition: 0.3s;
+}
+.cancel-btn:hover{
+    background: #ffffff;
+    box-shadow: 0 0 20px #262626;
+    color: #111;
+    transform: scale(1.1);
+}
+
+.wave-btn {
+    background: linear-gradient(45deg, #00194a, #574e01);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.wave-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(1, 25, 98, 0.219) 10%, transparent 60%);
+    transition: 0.6s;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.wave-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+.btn-3d {
+    background: #fffb00;
+    color: #00194a;
+    font-size: small;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #ffe100;
+    transition: 0.1s;
+}
+
+.btn-3d:active {
+    box-shadow: 0 2px 0 #ffe100;
+    transform: translateY(3px);
+}
+
+.glitch-btn {
+    padding: 5px 5px;
+    background: #222;
+    color: white;
+    font-size: small;
+    border: 3px solid  #fffb00;
+    border-radius: 8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+}
+
+.glitch-btn:hover {
+    animation: glitch 0.5s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+.holo-btn {
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ffcc00);
+    background-size: 400% 400%;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    animation: holo 3s infinite alternate;
+}
+
+@keyframes holo {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}

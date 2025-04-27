@@ -34,5 +34,8 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
+    'api' => [
+        'url' => env('API_URL', 'http://dotnet-api:5000/api'),
+    ],
+        
 ];

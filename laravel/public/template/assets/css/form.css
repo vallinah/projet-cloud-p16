@@ -1,0 +1,167 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url("./../font/quicksand/quicksand-v31-latin-500.woff2") format("woff2"), url("./../font/quicksand/quicksand-v31-latin-regular.woff2") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+.sm {
+  width: 40%;
+}
+
+.lg {
+  width: 60%;
+}
+
+.form-container {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  padding: 0.25cm;
+  align-items: center;
+  justify-content: space-around;
+  min-height: min-content;
+  font-family: "Quicksand", sans-serif;
+  border-radius: 10px;
+}
+.form-container h2 {
+  font-size: large;
+  align-self: flex-start;
+  margin-left: 0.25cm;
+  font-weight: bold;
+  margin-bottom: 0.5cm;
+}
+.form-container form {
+  background-color: rgb(255, 255, 255);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.25cm;
+  font-size: small;
+}
+.form-container form .form-control {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.form-container form .form-control input, .form-container form .form-control select {
+  height: 1cm;
+  border-radius: 5px;
+  width: 100%;
+  border: none;
+  background-color: rgba(3, 39, 110, 0.2509803922);
+}
+.form-container form .form-control input {
+  padding-left: 0.25cm;
+  padding-right: 0.25cm;
+  font-family: "Quicksand", sans-serif;
+  font-size: small;
+}
+.form-container form .form-control input:focus, .form-container form .form-control select:focus {
+  box-shadow: 0 0 5px rgb(1, 1, 82);
+  background-color: white;
+  outline: none;
+  border: none;
+}
+.form-container form .form-control .checklist {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 5px;
+}
+.form-container form .form-control .checklist div {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-container form .form-control input[type=checkbox], .form-container form .form-control input[type=radio] {
+  /* Vos styles ici */
+  padding: none;
+  height: 0.5cm;
+  width: 0.5cm;
+}
+.form-container form .form-control select:focus option:hover {
+  background-color: #021845; /* Vert */
+  color: white; /* Texte blanc */
+}
+
+.button-div {
+  margin-top: 0.5cm;
+  min-height: 1cm;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: center;
+  gap: 0.5cm;
+}
+.button-div button {
+  min-height: 100%;
+  font-family: "Quicksand", sans-serif;
+  padding: 10px 30px;
+}
+
+@media screen and (max-width: 450px) {
+  .sm, .lg {
+    min-width: 100%;
+    height: 100%;
+  }
+  .form-container {
+    color: white;
+    border-radius: 0px;
+    background-color: transparent;
+    padding: 0cm;
+    justify-content: flex-start;
+  }
+  .form-container h2 {
+    font-size: medium;
+    align-self: center;
+  }
+  .form-container form {
+    background-color: transparent;
+    font-size: small;
+    width: 90%;
+    gap: 0.25cm;
+  }
+  .form-container form .form-control {
+    align-self: center;
+    width: 80%;
+    gap: 0cm;
+  }
+  .form-container form .form-control input, .form-container form .form-control select {
+    height: 0.75cm;
+    border-radius: 2px;
+    width: 100%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.862745098);
+  }
+  .form-container form .form-control input {
+    padding-left: 0.15cm;
+    padding-right: 0.15cm;
+    font-family: "Quicksand", sans-serif;
+    font-size: small;
+  }
+  .form-container form .button-div {
+    min-height: 0.75cm;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    align-self: center;
+    gap: 0.25cm;
+    margin-top: 2cm;
+  }
+}
+
+/*# sourceMappingURL=form.css.map */

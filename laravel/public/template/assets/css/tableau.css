@@ -1,0 +1,162 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url("./../font/quicksand/quicksand-v31-latin-500.woff2") format("woff2"), url("./../font/quicksand/quicksand-v31-latin-regular.woff2") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+.lg {
+  min-width: 80%;
+  max-width: 80%;
+}
+
+.sm {
+  min-width: 40%;
+  max-width: 40%;
+}
+
+.table-container {
+  font-family: "Quicksand", sans-serif;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: small;
+}
+.table-container tbody td {
+  padding: 5px 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: small;
+}
+.table-container tfoot {
+  background: rgba(255, 255, 255, 0.992);
+}
+.table-container tfoot td {
+  font-weight: bold;
+  text-align: right;
+  background-color: rgba(255, 255, 255, 0.8274509804);
+}
+.table-container thead {
+  background: #ffffff;
+  color: black;
+}
+.table-container thead th {
+  padding: 5px;
+  font-size: 14px;
+}
+.table-container tbody tr:nth-child(even) {
+  color: rgb(1, 10, 42);
+  background: rgba(255, 255, 255, 0.816);
+}
+.table-container tbody tr:nth-child(odd) {
+  color: white;
+  background: rgb(1, 10, 42);
+}
+
+.table-container2 {
+  font-family: "Quicksand", sans-serif;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.table-container2 table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: small;
+}
+.table-container2 tbody td {
+  padding: 5px 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: small;
+}
+.table-container2 tfoot {
+  background: rgba(255, 255, 255, 0.992);
+}
+.table-container2 tfoot td {
+  font-weight: bold;
+  text-align: right;
+  background-color: rgba(255, 255, 255, 0.8274509804);
+}
+.table-container2 thead {
+  background: rgb(1, 10, 42);
+  color: rgb(255, 255, 255);
+}
+.table-container2 thead th {
+  padding: 5px;
+  font-size: 14px;
+}
+.table-container2 tbody tr:nth-child(even) {
+  color: rgb(1, 10, 42);
+  background: rgba(255, 255, 255, 0.816);
+}
+.table-container2 tbody tr:nth-child(odd) {
+  color: rgb(1, 10, 42);
+  background: white;
+}
+
+@media screen and (max-width: 450px) {
+  .lg, .sm {
+    width: 90%;
+    min-width: 90%;
+  }
+  .table-container {
+    border-radius: 5px;
+    font-size: smaller;
+  }
+  .table-container table thead th, .table-container table tbody td, .table-container table tfoot td {
+    padding: 5px;
+    font-size: 8px;
+  }
+  .table-container table thead th {
+    font-size: 8px;
+  }
+  .table-container table tfoot {
+    color: white;
+  }
+  .table-container ::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(231, 225, 225, 0), transparent);
+    border-radius: 50%;
+    filter: blur(40px);
+  }
+  .table-container ::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0) transparent);
+    bottom: 20%;
+    right: -40px;
+    border-radius: 50%;
+    filter: blur(40px);
+  }
+  .table-container2 {
+    border-radius: 5px;
+    font-size: smaller;
+  }
+  .table-container2 table thead th, .table-container2 table tbody td, .table-container2 table tfoot td {
+    padding: 5px;
+    font-size: 8px;
+  }
+  .table-container2 table thead th {
+    font-size: 8px;
+  }
+  .table-container2 table tfoot {
+    color: white;
+  }
+}
+@media screen and (min-width: 450px) and (max-width: 1200px) {
+  .sm {
+    width: 80%;
+    min-width: 80%;
+  }
+}
+
+/*# sourceMappingURL=tableau.css.map */

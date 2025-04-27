@@ -3,6 +3,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Aspnet.Models;
 using Aspnet.Services;
 using Aspnet.Configuration;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +50,18 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+
+var credentialPath = Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS");
+if (string.IsNullOrEmpty(credentialPath))
+{
+    throw new InvalidOperationException("GOOGLE_APPLICATION_CREDENTIALS environment variable is not set.");
+}
+
+FirebaseApp.Create(new AppOptions
+{
+    Credential = GoogleCredential.FromFile(credentialPath)
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
